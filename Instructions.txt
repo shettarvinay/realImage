@@ -1,0 +1,86 @@
+Instructions.
+
+RUN: ruby realImage.rb
+
+Things covered.
+1. Read from CSV with option to provide path, and retry optin if incorrect path is given.
+2. Format cities according to State and Country, stored in global hash, out put as Location_data.json for reference
+3. Add distributors
+4. Add sub distributors (nested level)
+5. Copy distributors regions to sub distributors
+6. Check if a particular, city->state->country is under distributors rights.
+7. Out put list of citie, states and countries on screen systematically (console) for user to choose and input them accordingly.
+8. Create distributors (main and sub distributors) and add/assign regions to them.
+9. All distributors data stored as global hash, and out put as json to distributors.json for reference.
+10. Command line tool developed, no use of any SQL or NOSQL databases.
+11. Showcase nested level users and option to choose from parent or sub distributors for 
+	a. adding sub distributors
+	b. checking for region distribution rights
+	c. adding region distibution rights
+12. Program never terminates, and showcases 4 options to choose from always as home screen, Ctrl+Z to be used to terminate.
+
+Things known and pending
+1. Exclude/Remove some cities/state/countries from the given user.
+2. When a main/parent distributor is removed of certain region, same has to flow to sub distributors.
+3. Redundant and repetetive code to be refactored.
+
+
+Dependencies Gems
+1. CSV
+2. JSON
+
+Devloped on
+ruby 2.3.1p112 (2016-04-26) [i386-linux-gnu]
+
+
+Sample Data Format.
+
+1. Region Gloabl Hash
+
+$regions={
+   "IN":{
+      "name":"India",
+      "states":{
+         "JK":{
+            "name":"Jammu and Kashmir",
+            "cities":{
+               "PUNCH":{
+                  "name":"Punch"
+               }
+            }
+         },
+         "TN":{
+            "name":"Tamil Nadu",
+            "cities":{
+               "KLRAI":{
+                  "name":"Keelakarai"
+               }
+            }
+         },
+         "AR":{
+            "name":"Arunachal Pradesh",
+            "cities":{
+               "TIRAP":{
+                  "name":"Tirap"
+               }
+            }
+         },
+         "UP":{
+            "name":"Uttar Pradesh",
+            "cities":{
+               "ZMANI":{
+                  "name":"Zamania"
+               },
+               "ZAIDR":{
+                  "name":"Zaidpur"
+               }
+            }
+         }
+      }
+   }
+}
+
+
+2. User Gloabl Hash
+
+{"users":{"d1":{"name":"d1","child":{"d11":{"name":"d11","countries":{"IN":{"states":{"AR":{"name":"Arunachal Pradesh","cities":{"TIRAP":{"name":"Tirap"}}}}}},"child":{}}},"countries":{"IN":{"states":{"AR":{"name":"Arunachal Pradesh","cities":{"TIRAP":{"name":"Tirap"}}}}}}},"d2":{"name":"d2","child":{"d22":{"name":"d22","countries":{"IN":{"states":{"AR":{"name":"Arunachal Pradesh","cities":{"TIRAP":{"name":"Tirap"}}}}}},"child":{}}},"countries":{"IN":{"states":{"AR":{"name":"Arunachal Pradesh","cities":{"TIRAP":{"name":"Tirap"}}}}}}}}}
